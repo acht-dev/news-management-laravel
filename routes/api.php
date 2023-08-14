@@ -29,9 +29,6 @@ Route::middleware('auth:api')->group( function () {
     Route::prefix("comments")->group(function () {
         Route::get('/', [CommentController::class, 'index']);
         Route::get('/{id}', [CommentController::class, 'show']);
-        Route::post('/', [CommentController::class, 'create']);
-        Route::put('/{id}', [CommentController::class, 'update']);
-        Route::delete('/{id}', [CommentController::class, 'destroy']);
     });
 
     Route::prefix("news")->group(function () {
