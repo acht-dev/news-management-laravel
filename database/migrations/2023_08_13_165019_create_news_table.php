@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText("content");
             $table->smallInteger("status")->nullable();
             $table->integer("category_id")->unsigned()->nullable();
+            $table->integer("news_image_id")->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->integer("created_by")->unsigned()->nullable();
