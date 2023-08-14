@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LogHistoryController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,10 +35,18 @@ Route::middleware('auth:api')->group( function () {
     });
 
     Route::prefix("news")->group(function () {
-        Route::get('/', [NewsController::class, 'index']);
         Route::post('/', [NewsController::class, 'create']);
-        Route::get('/{id}', [NewsController::class, 'show']);
     });
+
+    Route::prefix("log-histories")->group(function () {
+        Route::get('/', [LogHistoryController::class, 'index']);
+        Route::get('/{id}', [LogHistoryController::class, 'show']);
+    });
+});
+
+Route::prefix("news")->group(function () {
+    Route::get('/', [NewsController::class, 'index']);
+    Route::get('/{id}', [NewsController::class, 'show']);
 });
 
 Route::prefix("categories")->group(function () {
